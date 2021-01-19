@@ -38,9 +38,29 @@
   </div>
 
   <div class="posts-list">
-    <div>
+    {% for post in posts %}
+    <div class="post">
+
+
+    <div class="post-header">
+      <img class="rounded-circle avatar"  src="{{post.image.url}}" style="border-radius: 50%;max-width: 32px; margin-right: 10px;" data-holder-rendered="true">
+      <p>{{ user.get_username }} </p>
+      {{ post.location }}
+    </div>
+      <hr class="divider">
+    <div class="image-post">
+        <a href="url">
+        <img style="width: 100%;" src="{{ post.image.url }}" alt="{{ post.caption }}">
+    </a>
+    </div>
+    <div class="comment-section">
 
     </div>
+    </div>
+
+
+      {% endfor %}
+
   </div>
 
 {% else %}

@@ -41,3 +41,30 @@ background: #f3f1f1d9
     padding-left: 20px;
 }
 
+
+.posts-list{
+
+    margin-top:170px;
+}
+
+.post{
+    margin-top: auto;
+    width: 614px;
+    border: 1px solid #ccc;
+    padding: 0.5px;
+    background-color: white;
+    margin-left: 13%;
+    height: 814px;
+}
+
+.divider{
+    width: 100%;
+    color: gray;
+    /* size: 1px; */
+    border-width: 0.1px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 60px;
+    height:0.1px
+
+}

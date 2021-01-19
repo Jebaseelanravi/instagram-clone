@@ -101,26 +101,29 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = True
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
+#
+# TIME_ZONE = 'UTC'
+#
+# USE_I18N = True
+#
+# USE_L10N = True
+#
+# USE_TZ = True
+#
+# # Static files (CSS, JavaScript, Images)
+# # https://docs.djangoproject.com/en/3.1/howto/stati-files/
 
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
-
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'static'),
-    os.path.join(BASE_DIR,'insta/static')
+    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'insta/static')
 
 ]
+
+MEDIA_URL ='media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
