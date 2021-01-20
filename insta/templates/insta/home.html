@@ -31,21 +31,38 @@
       <div class="compass">
         <a href="#"><i class="far fa-heart" style="font-size:25px;color:black;"></i></a>
       </div>
+      <div class="nav-profile-image">
+         {% if profile.profile_pic == None %}
+          <img class="rounded-circle avatar"  src="{% static 'img/avatar.jpg' %}"  alt="{{ profile.user.username }}" data-holder-rendered="true">
+        {% else %}
+          <a><img class="rounded-circle avatar" src="{{ profile.profile_pic.url }}" alt="{{ profile.user.username }}"  data-holder-rendered="true"></a>
+        {% endif %}
 
-
+      </div>
 
     </div>
   </div>
 
+
+
   <div class="posts-list">
     {% for post in posts %}
     <div class="post">
-
-
     <div class="post-header">
-      <img class="rounded-circle avatar"  src="{{post.image.url}}" style="border-radius: 50%;max-width: 32px; margin-right: 10px;" data-holder-rendered="true">
-      <p>{{ user.get_username }} </p>
-      {{ post.location }}
+      <div class="profile-image">
+        {% if not post.author.profile_pic %}
+          <img class="rounded-circle avatar"  src="{% static 'img/avatar.jpg' %}"  alt="{{ profile.user.username }}" data-holder-rendered="true">
+        {% else %}
+          <img class="rounded-circle avatar"  src="{{ post.author.profile_pic.url }}"  alt="{{ profile.user.username }}" data-holder-rendered="true">
+        {% endif %}
+      </div>
+      <div class="profile-name">
+        <p>{{ user.get_username }} </p>
+      </div>
+      <div class="location">
+<!--        {{ post.location }}-->
+      </div>
+
     </div>
       <hr class="divider">
     <div class="image-post">
@@ -54,12 +71,37 @@
     </a>
     </div>
     <div class="comment-section">
+      <div class="comment-icons">
+        <div class="heart">
+          <a href="#"><i class="far fa-heart" style="font-size:25px;color:black;"></i></a>
+        </div>
+        <div class="comment">
+          <a href="#"><i class="far fa-comment" style="font-size:25px;color:black;"></i></a>
+        </div>
+        <div class="telegram">
+          <a href="#"><i class="fab fa-telegram-plane" style="font-size:25px;color:black;"></i></a>
+        </div>
 
+      </div>
+      <div class="likes">
+        <p> 13 Likes</p>
+      </div>
+      <div class="comment-list">
+        <p><strong>Jebaseelan</strong>Looks cool!! </p>
+        <p><strong>Gates</strong>Awesome cool!!</p>
+      </div>
+      <div class="posttime">
+        <p>Posted 12 hrs ago</p>
+      </div>
+      <div class="comment-area">
+        <input class="comment-input" type="text" placeholder="Add a Comment...">
+      </div>
     </div>
     </div>
 
 
       {% endfor %}
+
 
   </div>
 

@@ -4,13 +4,19 @@ from django.shortcuts import render
 from django.template import loader, Context
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
-from .models import Post
+from .models import Post, Profile
 
 
 def home(request):
     template = loader.get_template('insta/home.html')
+
+    if request.user.is_anonymous:
+        context = {}
+        return HttpResponse(template.render(context, request))
+
     posts = Post.objects.all()
-    context = {'posts': posts}
+    profile = Profile.objects.get(user=request.user)
+    context = {'posts': posts, 'profile': profile}
     return HttpResponse(template.render(context, request))
 
 

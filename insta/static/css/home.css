@@ -54,7 +54,7 @@ background: #f3f1f1d9
     padding: 0.5px;
     background-color: white;
     margin-left: 13%;
-    height: 814px;
+   /* height: 814px; */
 }
 
 .divider{
@@ -64,7 +64,51 @@ background: #f3f1f1d9
     border-width: 0.1px;
     margin-left: 0px;
     margin-right: 0px;
-    margin-top: 60px;
-    height:0.1px
+    margin-top: 0.5px;
+    height:0.1px;
+    margin-bottom: 0px;
 
+}
+
+.post-header {
+    display: flex;
+    flex-direction: row;
+    /*padding-left: 20px;
+    padding-top: 10px; */
+}
+
+.profile-image{
+
+    margin-left: 20px;
+    margin-top: 20px;
+
+}
+.profile-image img{
+    border-radius: 50%;
+    max-width: 40px;
+    margin-right: 10px;
+}
+
+.profile-name{
+    margin-top: 15px;
+}
+
+.comment-icons
+{
+display: flex;
+flex-direction:row;
+}
+
+.comment-icons > div{
+    margin: 5px;
+}
+
+.comment-input{
+    width:607px;
+    height: 60px;
+}
+
+.nav-profile-image img{
+    width: 40px;
+    border-radius: 50%;
 }
