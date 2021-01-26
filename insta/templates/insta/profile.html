@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+
+
+
+{% if user.is_authenticated %}
+
+  {% include "insta/nav.html" %}
+
+  <div class ="profile-section">
+    <div class="profile-image">
+      {% if not profile.profile_pic %}
+          <img class="rounded-circle my-avatar"  src="{% static 'img/avatar-2.jpg' %}"  alt="{{ profile.user.username }}" data-holder-rendered="true">
+        {% else %}
+          <img class="rounded-circle my-avatar" src="{{ profile.profile_pic.url }}" alt="{{ profile.user.username }}"  data-holder-rendered="true">
+        {% endif %}
+    </div>
+    <div class="profile-bio-section">
+      <div class="profile-details">
+          <div class="profile-name">
+            <p>Jebaseelan</p>
+          </div>
+          <div class="Edit-profile">
+            <p>Edit Profile</p>
+          </div>
+          <div class="settings-icon">
+              <i class="fas fa-cog"></i>
+          </div>
+          <div class="posts-count">
+            <p>Edit Profile</p>
+          </div>
+          <div class="followers-count">
+            <p>Edit Profile</p>
+          </div>
+          <div class="following-count">
+            <p>Edit Profile</p>
+          </div>
+      </div>
+      <div class="profile-bio">
+        <p>Jebaseelan Ravi</p>
+        <p>Prayer bring victory</p>
+        <p>Prayer bring victory</p>
+        <p>Prayer bring victory</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabs">
+      <div class="post-icon">
+          <p><i class="fas fa-th "></i>&nbsp;POSTS</p>
+      </div>
+      <div class="igtv-icon">
+          <p><i class="fas fa-tv"></i>&nbsp;IGTV</p>
+      </div>
+      <div class="saved-icon">
+          <p><i class="far fa-bookmark"></i>&nbsp;SAVED</p>
+      </div>
+      <div class="tagged-icon">
+            <p><i class="far fa-id-badge"></i>&nbsp;TAGGED</p>
+      </div>
+  </div>
+
+  <div class="image-gallery">
+      {% for post in posts%}
+      <div class="image">
+          <img src={{post.image.url}} alt="Snow" style="width:100%">
+      </div>
+      {% endfor %}
+
+  </div>
+
+{% else %}
+  <p>You are not logged into</p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+{% endblock %}

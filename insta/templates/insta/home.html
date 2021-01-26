@@ -7,43 +7,7 @@
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% if user.is_authenticated %}
 
-  <div class="header">
-
-    <div class="logo">
-      <img src="https://i.imgur.com/zqpwkLQ.png" />
-    </div>
-
-    <div class="search-bar">
-      <input type="text" class="search-bar-input" placeholder="Search">
-    </div>
-
-    <div class="icons-data">
-
-      <div class="home">
-        <a href="#"><i class="fa fa-home fa-inverse" style="font-size:25px;color:black;"></i></a>
-      </div>
-      <div class="messenger">
-        <a href="#"><i class="fab fa-facebook-messenger fa-inverse" style="font-size:25px;color:black;"></i></a>
-      </div>
-      <div class="heart">
-        <a href="#"><i class="fa fa-compass fa-inverse" style="font-size:25px;color:black;"></i></a>
-      </div>
-      <div class="compass">
-        <a href="#"><i class="far fa-heart" style="font-size:25px;color:black;"></i></a>
-      </div>
-      <div class="nav-profile-image">
-         {% if profile.profile_pic == None %}
-          <img class="rounded-circle avatar"  src="{% static 'img/avatar.jpg' %}"  alt="{{ profile.user.username }}" data-holder-rendered="true">
-        {% else %}
-          <a><img class="rounded-circle avatar" src="{{ profile.profile_pic.url }}" alt="{{ profile.user.username }}"  data-holder-rendered="true"></a>
-        {% endif %}
-
-      </div>
-
-    </div>
-  </div>
-
-
+      {% include "insta/nav.html" %}
 
   <div class="posts-list">
     {% for post in posts %}
@@ -51,13 +15,13 @@
     <div class="post-header">
       <div class="profile-image">
         {% if not post.author.profile_pic %}
-          <img class="rounded-circle avatar"  src="{% static 'img/avatar.jpg' %}"  alt="{{ profile.user.username }}" data-holder-rendered="true">
+          <img class="rounded-circle avatar"  src="{% static 'img/avatar-2.jpg' %}"  alt="{{ post.author.user.username }}" data-holder-rendered="true">
         {% else %}
-          <img class="rounded-circle avatar"  src="{{ post.author.profile_pic.url }}"  alt="{{ profile.user.username }}" data-holder-rendered="true">
+          <img class="rounded-circle avatar"  src="{{ post.author.profile_pic.url }}"  alt="{{ post.author.user.username }}" data-holder-rendered="true">
         {% endif %}
       </div>
       <div class="profile-name">
-        <p>{{ user.get_username }} </p>
+        <p>{{ post.author.user.username }} </p>
       </div>
       <div class="location">
 <!--        {{ post.location }}-->
@@ -87,14 +51,25 @@
         <p> 13 Likes</p>
       </div>
       <div class="comment-list">
-        <p><strong>Jebaseelan</strong>Looks cool!! </p>
-        <p><strong>Gates</strong>Awesome cool!!</p>
+            <p>Hello</p>
+            {% for comment in post.comments.all|slice:":2" %}
+                <p>{{ comment.user.username }}: {{ comment.description }}</p>
+            {% endfor %}
+
       </div>
       <div class="posttime">
         <p>Posted 12 hrs ago</p>
       </div>
       <div class="comment-area">
-        <input class="comment-input" type="text" placeholder="Add a Comment...">
+
+          <form action="/add_comment" method="post">
+              {% csrf_token %}
+                <input class="description-input" type="text" name="description" />
+                <input class="post-input" type="hidden" name="demo" value="{{ post.id }}"/>
+                <input type="submit" />
+        </form>
+
+
       </div>
     </div>
     </div>

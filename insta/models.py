@@ -1,4 +1,3 @@
-
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
@@ -8,7 +7,6 @@ from django.contrib.auth.models import User
 
 
 class Profile(models.Model):
-
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     biography = models.TextField(blank=True)
     phone_number = models.CharField(max_length=20, blank=True)
@@ -17,8 +15,9 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
-class Post(models.Model):
 
+
+class Post(models.Model):
     author = models.ForeignKey(Profile, on_delete=models.CASCADE)
     caption = models.CharField(max_length=500, null=True, blank=True)
     location = models.CharField(max_length=500, null=True, blank=True)
@@ -30,3 +29,15 @@ class Post(models.Model):
         return self.caption
 
 
+class Comment(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post_linked = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
+    description = models.CharField(max_length=500)
+    comment_posted_on = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return "Comment by {} on {}".format(self.user.username, self.post_linked.caption)
+
+    class Meta:
+        ordering = ('-comment_posted_on',)

@@ -1,0 +1,62 @@
+body{
+background: #fafafa
+}
+
+
+.profile-section{
+    display: flex;
+    flex-direction: row;
+    margin-top: 8%;
+    margin-left: 20%;
+}
+
+.my-avatar{
+    border-radius: 50%;
+    width:180px;
+}
+
+.profile-details{
+    padding-left:30px;
+    width: 300px;
+    display:flex;
+    flex-wrap: wrap;
+    flex-basis: 33.333333%
+}
+
+.profile-details > div {
+    padding: 10px;
+}
+
+.profile-bio{
+    padding-left:38px;
+}
+
+
+.tabs{
+    display:flex;
+    flex-direction:row;
+    width: 935px;
+    height: 53px;
+    margin:auto;
+    border-top: 1px solid rgba(var(--b38,219,219,219),1);
+
+
+}
+
+
+.tabs > div{
+    color: rgba(var(--f52,142,142,142),1);
+    padding-top:10px;
+    padding-left:150px;
+}
+
+.image-gallery{
+    display:flex;
+    flex-direction:row;
+    width: 935px;
+    margin:auto;
+}
+ .image{
+   flex: 33.33%;
+   padding: 5px;
+  }

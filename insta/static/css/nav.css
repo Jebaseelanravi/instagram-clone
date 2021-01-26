@@ -1,0 +1,60 @@
+
+.header {
+    background: white;
+    border-bottom: 0.5px solid #ccc;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    padding-bottom:10px;
+}
+
+
+.logo img {
+    width: 100px;
+    height: auto;
+    padding-left: 200px;
+    padding-top: 10px;
+}
+
+.search-bar{
+    margin-left:15%;
+}
+.search-bar-input{
+    margin-top:15px;
+}
+
+.icons-data{
+    display: flex;
+    flex-direction: row;
+    padding-left: 15%;
+    padding-top: 15px;
+}
+
+.compass, .heart, .messenger{
+    padding-left: 20px;
+}
+
+
+.nav-profile-image{
+    margin-top: -8px;
+    margin-left: 10px;
+}
+
+
+.insta-logout{
+    padding-top: 7px;
+    padding-left: 7px;
+}}
+
+.nav-profile-image img{
+    width: 40px;
+    border-radius: 50%;
+}
+
+.avatar{
+border-radius: 50%;
+width:40px;
+}
