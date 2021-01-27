@@ -16,7 +16,6 @@ class Profile(models.Model):
         return self.user.username
 
 
-
 class Post(models.Model):
     author = models.ForeignKey(Profile, on_delete=models.CASCADE)
     caption = models.CharField(max_length=500, null=True, blank=True)
@@ -30,7 +29,6 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post_linked = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
     description = models.CharField(max_length=500)
@@ -41,3 +39,12 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ('-comment_posted_on',)
+
+
+class Like(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post_linked = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='posts')
+
+    def __str__(self):
+        return 'User :{} Liked {} Post '.format(self.user.username,self.post_linked.caption)

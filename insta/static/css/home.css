@@ -53,7 +53,7 @@ background: #f3f1f1d9
 }
 
 .profile-name{
-    margin-top: 15px;
+    margin-top: 28px;
 }
 
 .comment-icons
@@ -63,10 +63,42 @@ flex-direction:row;
 }
 
 .comment-icons > div{
-    margin: 5px;
+    margin: 5px 5px 5px 10px;
 }
 
 .comment-input{
     width:607px;
     height: 60px;
+}
+
+.description-input{
+    height: 40px;
+    width: 87%;
+    border: 1px solid rgba(var(--ce3,239,239,239),1);
+}
+
+.comment-post{
+    width: 11%;
+    height: 44px;
+    border: 1px solid rgba(var(--ce3,239,239,239),1);
+    background: white;
+}
+
+a.profile-link{
+    text-decoration: none;
+    color: black;
+    font-weight:600;
+    font-family:  apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    }
+
+p.comments-username{
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-weight: 500;
+    line-height: 18px;
+    font-size: 14px;
+}
+
+.comment-container{
+ padding-left: 10px;
 }

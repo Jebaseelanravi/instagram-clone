@@ -15,13 +15,13 @@
     <div class="post-header">
       <div class="profile-image">
         {% if not post.author.profile_pic %}
-          <img class="rounded-circle avatar"  src="{% static 'img/avatar-2.jpg' %}"  alt="{{ post.author.user.username }}" data-holder-rendered="true">
+          <a href="/user/{{ post.author.user.username }}"><img class="rounded-circle avatar"  src="{% static 'img/avatar-2.jpg' %}"  alt="{{ post.author.user.username }}" data-holder-rendered="true"></a>
         {% else %}
-          <img class="rounded-circle avatar"  src="{{ post.author.profile_pic.url }}"  alt="{{ post.author.user.username }}" data-holder-rendered="true">
+         <a href="/user/{{ post.author.user.username }}"><img class="rounded-circle avatar"  src="{{ post.author.profile_pic.url }}"  alt="{{ post.author.user.username }}" data-holder-rendered="true"></a>
         {% endif %}
       </div>
       <div class="profile-name">
-        <p>{{ post.author.user.username }} </p>
+        <a class="profile-link" href="/user/{{ post.author.user.username }}">{{ post.author.user.username }} </a>
       </div>
       <div class="location">
 <!--        {{ post.location }}-->
@@ -36,8 +36,8 @@
     </div>
     <div class="comment-section">
       <div class="comment-icons">
-        <div class="heart">
-          <a href="#"><i class="far fa-heart" style="font-size:25px;color:black;"></i></a>
+        <div class="post-heart">
+          <a href="/like/{{ post.id }}"><i class="fas fa-heart" style="font-size:25px;color:black;color: #ec3c3c;"></i></a>
         </div>
         <div class="comment">
           <a href="#"><i class="far fa-comment" style="font-size:25px;color:black;"></i></a>
@@ -47,26 +47,27 @@
         </div>
 
       </div>
+      <div class="comment-container">
       <div class="likes">
-        <p> 13 Likes</p>
+        <p>{{ post.likes }} Likes</p>
       </div>
       <div class="comment-list">
-            <p>Hello</p>
             {% for comment in post.comments.all|slice:":2" %}
-                <p>{{ comment.user.username }}: {{ comment.description }}</p>
+          <p class="comments-username">{{ comment.user.username }}  <span style="font-size: 14px;font-weight:initial" class="comments-description">{{ comment.description }}</span> </p>
             {% endfor %}
 
       </div>
       <div class="posttime">
         <p>Posted 12 hrs ago</p>
       </div>
+      </div>
       <div class="comment-area">
 
           <form action="/add_comment" method="post">
               {% csrf_token %}
-                <input class="description-input" type="text" name="description" />
+                <input class="description-input" type="text" name="description" placeholder="Add a comment..." />
                 <input class="post-input" type="hidden" name="demo" value="{{ post.id }}"/>
-                <input type="submit" />
+                <input class="comment-post" type="submit" value="Post" />
         </form>
 
 

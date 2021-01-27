@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.template import loader, Context
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
-from .models import Post, Profile, Comment
+from .models import Post, Profile, Comment, Like
 import json
 
 
@@ -33,7 +33,6 @@ def login_user(request):
         return HttpResponse("user ot logged in ")
 
 
-
 def signup(request):
     pass
 
@@ -49,9 +48,22 @@ def user_profile(request, username):
 
 def add_comment(request):
     if request.POST:
-        description,id=request.POST['description'],request.POST['demo']
+        description, id = request.POST['description'], request.POST['demo']
         post = Post.objects.get(pk=id)
         if description is not None:
-            Comment.objects.create(post_linked=post,description=description,user=request.user)
+            Comment.objects.create(post_linked=post, description=description, user=request.user)
             return redirect(reverse('home'))
 
+
+def like_post(request, postid):
+    post = Post.objects.get(id=postid)
+    try:
+        is_Liked = Like.objects.get(post_linked=post, user__username=request.user.username)
+        Like.objects.filter(post_linked=post, user__username=request.user.username).delete()
+        post.likes -=1
+    except Like.DoesNotExist:
+
+        Like.objects.create(post_linked=post, user=request.user)
+        post.likes +=1
+    post.save()
+    return redirect(reverse('home'))
