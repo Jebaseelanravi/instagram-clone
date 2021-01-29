@@ -5,7 +5,7 @@ from django.template import loader, Context
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
 from .models import Post, Profile, Comment, Like
-import json
+from .forms import PostForm
 
 
 def home(request):
@@ -60,10 +60,29 @@ def like_post(request, postid):
     try:
         is_Liked = Like.objects.get(post_linked=post, user__username=request.user.username)
         Like.objects.filter(post_linked=post, user__username=request.user.username).delete()
-        post.likes -=1
+        post.likes -= 1
     except Like.DoesNotExist:
 
         Like.objects.create(post_linked=post, user=request.user)
-        post.likes +=1
+        post.likes += 1
     post.save()
     return redirect(reverse('home'))
+
+
+def add_post(request):
+    template = loader.get_template('insta/post.html')
+
+    if request.method == "POST":
+        profile = Profile.objects.get(user=request.user)
+        form = PostForm(request.POST,request.FILES)
+
+        if form.is_valid():
+            fs = form.save(commit=False)
+            fs.author = profile
+            fs.save()
+    else:
+        form = PostForm()
+        pass
+
+    context = {'form': form}
+    return HttpResponse(template.render(context, request))

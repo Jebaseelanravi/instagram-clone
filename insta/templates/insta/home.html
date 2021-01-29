@@ -4,6 +4,7 @@
 
 {% block content %}
 {% load static %}
+{% load humanize %}
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% if user.is_authenticated %}
 
@@ -58,10 +59,10 @@
 
       </div>
       <div class="posttime">
-        <p>Posted 12 hrs ago</p>
+        <p class="postedtime" >{{ post.posted_on |naturaltime  }} </p>
       </div>
       </div>
-      <div class="comment-area">
+      <div class="comment-area" id="comment-area">
 
           <form action="/add_comment" method="post">
               {% csrf_token %}
