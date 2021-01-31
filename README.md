@@ -64,10 +64,10 @@ Launch http://127.0.0.1:8000/ in your browser
 
 ##### Home Page 
 
-![Alt text](./insta/static/demo/homepage.jpg?raw=true "Title")
+![Alt text](./insta/static/demo/homepage.JPG?raw=true "Title")
 
 
 ##### Home Page 
 
-![Alt text](./insta/static/demo/profile.jpg?raw=true "Title")
+![Alt text](./insta/static/demo/profile.JPG?raw=true "Title")
 
