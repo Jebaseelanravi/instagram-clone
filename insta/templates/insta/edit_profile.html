@@ -1,0 +1,44 @@
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/edit_profile.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+{% load crispy_forms_tags %}
+
+{% include 'insta/nav.html' %}
+
+<div class="form-container">
+
+
+<form action="/edit/{{ user.username }}" enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+<!--    <img src="/media/{{ form.profile_pic.value}}">-->
+    <div class="edit-header">
+      <img src="https://i.imgur.com/zqpwkLQ.png" />
+    </div>
+    {{ form|crispy }}
+
+<!--    {% for field in form %}-->
+<!--    <div class="fieldWrapper">-->
+<!--        <div class="field-header">-->
+<!--             {{ field.label_tag }}-->
+<!--        </div>-->
+<!--        <div class="field-data">-->
+<!--            {{ field }}-->
+<!--        </div>-->
+<!--&lt;!&ndash;        {{ field.errors }}&ndash;&gt;-->
+
+<!--&lt;!&ndash;        {% if field.help_text %}&ndash;&gt;-->
+<!--&lt;!&ndash;        <p class="help">{{ field.help_text|safe }}</p>&ndash;&gt;-->
+<!--&lt;!&ndash;        {% endif %}&ndash;&gt;-->
+<!--    </div>-->
+<!--    {% endfor %}-->
+    <button type="submit" class="btn btn-success">Save</button>
+</form>
+</div>
+ {% endblock %}

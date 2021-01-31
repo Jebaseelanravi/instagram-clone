@@ -1,5 +1,6 @@
 body{
-background: #fafafa
+background: #fafafa;
+font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
 }
 
 
@@ -17,18 +18,26 @@ background: #fafafa
 
 .profile-details{
     padding-left:30px;
-    width: 300px;
+    width: 500px;
     display:flex;
     flex-wrap: wrap;
-    flex-basis: 33.333333%
+    flex-basis: 33.333333%;
+    line-height: 5px;
+}
+
+.profile-name{
+    font-size: 28px;
+    font-weight: 300;
 }
 
 .profile-details > div {
     padding: 10px;
+    flex-basis: 25%
 }
 
 .profile-bio{
     padding-left:38px;
+    line-height: 6px;
 }
 
 
@@ -50,13 +59,31 @@ background: #fafafa
     padding-left:150px;
 }
 
-.image-gallery{
+.image-gallery {
     display:flex;
+    flex-wrap: wrap;
     flex-direction:row;
     width: 935px;
     margin:auto;
+
 }
- .image{
-   flex: 33.33%;
+.image{
+   flex: 25%;
    padding: 5px;
+   width:100%;
   }
+
+.sp-posts-count,.sp-followers-count, .sp-following-count{
+    font-weight: 500;
+}
+
+.Edit-profile-text{
+    padding-top:5%;
+    text-decoration: none;
+    color: black;
+}
+
+
+.fa-cog{
+    padding-top:12%;
+}

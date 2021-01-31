@@ -2,8 +2,8 @@
 <link rel="stylesheet" href="{% static 'css/nav.css' %}">
 <div class="header">
 
-    <div class="logo">
-      <img src="https://i.imgur.com/zqpwkLQ.png" />
+    <div class="insta-logo">
+      <a href="/"><img src="https://i.imgur.com/zqpwkLQ.png" /></a>
     </div>
 
     <div class="search-bar">
@@ -24,18 +24,33 @@
       <div class="heart">
         <a href="#"><i class="far fa-heart" style="font-size:25px;color:black;"></i></a>
       </div>
-      <div class="nav-profile-image">
-         {% if not profile.profile_pic %}
-          <a href="user/{{ profile.user.username }}"><img class="rounded-circle avatar"  src="{% static 'img/avatar-2.jpg' %}"  alt="{{ profile.user.username }}" data-holder-rendered="true"></a>
-        {% else %}
-          <a href="user/{{ profile.user.username }}" ><img class="rounded-circle avatar" src="{{ profile.profile_pic.url }}" alt="{{ profile.user.username }}"  data-holder-rendered="true"></a>
-        {% endif %}
+<!--      <div class="nav-profile-image">-->
+<!--         {% if not profile.profile_pic %}-->
+<!--          <a href="user/{{ profile.user.username }}"><img class="rounded-circle avatar"  src="{% static 'img/avatar-2.jpg' %}"  alt="{{ profile.user.username }}" data-holder-rendered="true"></a>-->
+<!--        {% else %}-->
+<!--          <a href="user/{{ profile.user.username }}" ><img class="rounded-circle avatar" src="{{ profile.profile_pic.url }}" alt="{{ profile.user.username }}"  data-holder-rendered="true"></a>-->
+<!--        {% endif %}-->
+<!--      </div> -->
 
-      </div>
 
-      <div class ="insta-logout">
-        <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt fa-lg"></i></a>
-      </div>
+    <div class="dropdown nav-profile-image">
+            {% if not profile.profile_pic %}
+              <a href="/user/{{ profile.user.username }}"><img class="rounded-circle avatar"  src="{% static 'img/avatar-2.jpg' %}"  alt="{{ profile.user.username }}" data-holder-rendered="true"></a>
+            {% else %}
+              <a href="/user/{{ profile.user.username }}" ><img class="rounded-circle avatar" src="{{ profile.profile_pic.url }}" alt="{{ profile.user.username }}"  data-holder-rendered="true"></a>
+            {% endif %}
+
+          <div class="dropdown-content">
+            <a href="/user/{{ profile.user.username }}">My profile</a>
+            <a href="/create/post">Add Post</a>
+            <a href="{% url 'logout' %}">Log out</a>
+          </div>
+    </div>
+
+<!--      <div class ="insta-logout">-->
+<!--        <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt fa-lg"></i></a>-->
+<!--      </div>-->
+
 
     </div>
   </div>

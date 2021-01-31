@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Profile{% endblock %}
+{% block title %}{{ profile.user.first_name }} {{ profile.user.last_name }} (@{{ profile.user.username }} ){% endblock %}
 {% block content %}
 {% load static %}
 
@@ -22,29 +22,32 @@
     <div class="profile-bio-section">
       <div class="profile-details">
           <div class="profile-name">
-            <p>Jebaseelan</p>
+            <h2 class="profile-name">{{ profile.user.username }}</h2>
           </div>
-          <div class="Edit-profile">
-            <p>Edit Profile</p>
+          <div style="padding-top: 8%;" class="Edit-profile">
+            <a  class="Edit-profile-text" href="/edit/{{profile.user.username}}">Edit Profile</a>
           </div>
           <div class="settings-icon">
               <i class="fas fa-cog"></i>
           </div>
           <div class="posts-count">
-            <p>Edit Profile</p>
+              <p ><span class="sp-posts-count">{{ posts.count }}</span>&nbsp;Post</p>
           </div>
           <div class="followers-count">
-            <p>Edit Profile</p>
+            <p><span class="sp-followers-count">{{ 210 }}</span>&nbsp;followers</p>
           </div>
           <div class="following-count">
-            <p>Edit Profile</p>
+            <p><span class="sp-following-count">{{ 290 }}</span>&nbsp;following</p>
           </div>
       </div>
       <div class="profile-bio">
-        <p>Jebaseelan Ravi</p>
-        <p>Prayer bring victory</p>
-        <p>Prayer bring victory</p>
-        <p>Prayer bring victory</p>
+        <p>{{ profile.user.first_name }} {{ profile.user.last_name }}</p>
+        {% for bio in profile.split_biography %}
+          <p>{{ bio }}</p>
+
+        {% endfor %}
+
+
       </div>
     </div>
   </div>

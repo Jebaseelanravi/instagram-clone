@@ -15,6 +15,9 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
+    def split_biography(self):
+        return self.biography.split("\n")
+
 
 class Post(models.Model):
     author = models.ForeignKey(Profile, on_delete=models.CASCADE)
@@ -23,6 +26,9 @@ class Post(models.Model):
     posted_on = models.DateTimeField(default=timezone.now)
     image = models.ImageField()
     likes = models.IntegerField(default=0)
+
+    class Meta:
+        ordering = ['-posted_on']
 
     def __str__(self):
         return self.caption

@@ -1,0 +1,43 @@
+body{
+background: #f3f1f1d9;
+font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+
+
+.form-container{
+    margin: auto;
+    width: 30%;
+    border: 1px solid gray;
+    padding: 10px;
+    margin-top: 10%;
+    background: white;
+    line-height: 35px;
+ }
+
+
+ .edit-header {
+  border: 0px solid #000;
+  margin-bottom: 5px;
+}
+
+.edit-header img {
+  height: 50px;
+  width: 175px;
+  margin: auto;
+  position: relative;
+  left: 45px;
+}
+
+
+.field-header{
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+}
+
+.field-data input {
+    width: 100%;
+    text-align: center;
+    height: 30px;
+
+}
